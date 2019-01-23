@@ -1,0 +1,18 @@
+service: python-service-template
+
+plugins:
+  - serverless-offline
+
+provider:
+  name: aws
+  runtime: python3.7
+  stage: ${opt:stage, 'dev'}
+  region: us-east-1
+
+functions:
+  hello:
+    handler: handler.hello
+    events:
+      - http:
+          method: get
+          path: /
