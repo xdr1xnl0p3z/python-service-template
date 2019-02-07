@@ -2,6 +2,8 @@ service: python-service-template
 
 plugins:
   - serverless-offline
+  - serverless-offline-sqs
+  - serverless-python-requirements
 
 provider:
   name: aws
@@ -11,7 +13,7 @@ provider:
 
 functions:
   hello:
-    handler: handler.hello
+    handler: src/handlers/handler.hello
     events:
       - http:
           method: get
