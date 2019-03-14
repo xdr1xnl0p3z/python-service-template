@@ -1,7 +1,8 @@
 import json
+from typing import Dict
 
 
-def hello(event, context):
+def hello(event: Dict[str, str], context: Dict[str, str]) -> Dict[str, object]:
     body = {
         "message": "Go Serverless v1.0! Your function executed successfully!",
         "input": event,

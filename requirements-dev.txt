@@ -1,2 +1,4 @@
 pre-commit
 boto3==1.9.86
+mypy
+pytest
