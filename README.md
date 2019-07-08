@@ -9,13 +9,13 @@ This template includes the following extra configurations:
 
 - [serverless framework][1]
 - [serverless-offline plugin][2]
-- [Black][3] code formatter
+- [Autopep8][3] code formatter
 - [Flake8][4] for code linting
 - [Pre-commit][5] framework to add extra git hooks
 
 It will, by default set the stage to `dev` and the region to `us-east-1`.
 
-Pre-commit is configured to run `black` and `flake8` on the pre-commit hook.
+Pre-commit is configured to run `autopep8` and `flake8` on the pre-commit hook.
 
 ## Usage
 
