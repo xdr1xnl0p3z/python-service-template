@@ -3,13 +3,19 @@ service: python-service-template
 plugins:
   - serverless-offline
   - serverless-offline-sqs
+  - serverless-plugin-git-variables
+  - serverless-plugin-warmup
+  - serverless-prune-plugin
   - serverless-python-requirements
 
 provider:
   name: aws
   runtime: python3.7
-  stage: ${opt:stage, 'dev'}
+  stage: ${opt:stage, "dev"}
   region: us-east-1
+  tags:
+    branch: ${git:branch}
+    commit: ${git:sha1}
 
 functions:
   hello:
@@ -18,3 +24,20 @@ functions:
       - http:
           method: get
           path: /
+    warmup:
+      enabled: true
+
+custom:
+  exportGitVariables: false
+  prune:
+    automatic: true
+    number: 10
+  pythonRequirements:
+    dockerizePip: non-linux
+  warmup:
+    events:
+      schedule: "rate(5 minutes)"
+    timeout: 20
+    prewarm: true
+    memorySize: 512
+    role: arn:aws:iam::635826338015:role/warmupRole

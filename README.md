@@ -1,14 +1,18 @@
 # Python Service Template
 
 This is the Fondeadora Python serverless framework template.
-It is intended to be used with Python v3.6 but could be updated to more recent versions.
+It is intended to be used with Python v3.7 but could be updated to more recent versions.
 
 ## Contents
 
 This template includes the following extra configurations:
 
 - [serverless framework][1]
-- [serverless-offline plugin][2]
+  - [serverless-offline plugin][2]
+  - [serverless-plugin-git-variables][6]
+  - [serverless-plugin-warmup][7]
+  - [serverless-prune-plugin][8]
+  - [serverless-python-requirements][9]
 - [Autopep8][3] code formatter
 - [Flake8][4] for code linting
 - [Pre-commit][5] framework to add extra git hooks
@@ -21,27 +25,64 @@ Pre-commit is configured to run `autopep8` and `flake8` on the pre-commit hook.
 
 First you should have Node.js, yarn and Python v3.6 installed on your machine.
 
-1. Install the `serverless` framework with 
+1. Install the `serverless` framework with
 
-```npm install -g serverless```
+   ```shell
+   npm install -g serverless
+   ```
 
-2. Run `yarn` to install the serverless framework plugins required.
+2. Install the serverless framework plugins required.
 
-3. Install the python dependencies with `pip install -r requirements-dev.txt`.
+   ```shell
+   yarn
+   ```
 
-4. Run `pre-commit install` to install the pre-commit hooks.
+3. Create a virtualenv for python
 
-And that's all.
+   ```shell
+   yarn venv-setup
+   ```
+
+4. Install python dependencies
+
+   ```shell
+   pip install -r requirements-dev.txt
+   ```
+
+5. Install the pre-commit hooks.
+
+   ```shell
+   pre-commit install
+   ```
+
+And that’s all.
 
 To initialize a new repository using this template use the following command:
 
-`serverless create --template-url https://github.com/Fondeadora/python-service-template --path myService`
+```shell
+serverless create --template-url https://github.com/Fondeadora/python-service-template --path myService
+```
 
 Make sure you replace `myService` with the name of your service and update the `service.name` in `serverless.yml` file.
 
 Then start your development environment with
 
-`sls offline`
+```
+sls offline
+```
+
+## Scripts
+
+```shell
+# Deploy dev
+yarn deploy
+
+# Deploy production
+yarn deploy-prod
+
+# Test
+python -m unittest discover
+```
 
 ## Further notes
 
@@ -60,3 +101,7 @@ Please open an issue so we can discuss changes to this template.
 [3]: https://black.readthedocs.io/en/stable/
 [4]: http://flake8.pycqa.org/en/latest/
 [5]: https://pre-commit.com/
+[6]: https://github.com/jacob-meacham/serverless-plugin-git-variables
+[7]: https://github.com/FidelLimited/serverless-plugin-warmup
+[8]: https://github.com/claygregory/serverless-prune-plugin
+[9]: https://github.com/UnitedIncome/serverless-python-requirements
