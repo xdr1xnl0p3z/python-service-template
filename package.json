@@ -4,9 +4,11 @@
   "name": "python-service-template",
   "scripts": {
     "deploy": "sls deploy --stage=dev",
-    "deploy-prod": "sls deploy --stage=production",
+    "deploy:prod": "sls deploy --stage=production",
     "test": "python -m unittest discover",
-    "venv-setup": "python3 -m venv .venv"
+    "venv:setup": "python3 -m venv .venv",
+    "pip:dev": "pip install -r requirements-dev.txt && pip install -r requirements.txt",
+    "pip": "pip install -r requeriments.txt"
   },
   "devDependencies": {
     "serverless-offline": "^4.1.4",
