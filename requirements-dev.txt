@@ -1,6 +1,8 @@
-pre-commit
+add-trailing-comma==1.5.0
 boto3==1.9.86
-mypy
-pytest
-flake8
-autopep8
+isort==4.3.21
+mypy==0.740
+pre-commit==1.20.0
+pyformat==0.7
+pytest==5.2.2
+wemake-python-styleguide==0.13.3

@@ -8,18 +8,18 @@ It is intended to be used with Python v3.7 but could be updated to more recent v
 This template includes the following extra configurations:
 
 - [serverless framework][1]
-  - [serverless-offline plugin][2]
-  - [serverless-plugin-git-variables][6]
-  - [serverless-plugin-warmup][7]
-  - [serverless-prune-plugin][8]
-  - [serverless-python-requirements][9]
+- [serverless-offline plugin][2]
+- [serverless-plugin-git-variables][6]
+- [serverless-plugin-warmup][7]
+- [serverless-prune-plugin][8]
+- [serverless-python-requirements][9]
 - [Autopep8][3] code formatter
 - [Flake8][4] for code linting
 - [Pre-commit][5] framework to add extra git hooks
 
 It will, by default set the stage to `dev` and the region to `us-east-1`.
 
-Pre-commit is configured to run `autopep8` and `flake8` on the pre-commit hook.
+Pre-commit is configured to run `pyformat` and `flake8` on the pre-commit hook.
 
 ## Usage
 
@@ -27,40 +27,40 @@ First you should have Node.js, yarn and Python v3.6 installed on your machine.
 
 1. Install the `serverless` framework with
 
-   ```shell
-   npm install -g serverless
-   ```
+```shell
+npm install -g serverless
+```
 
 2. Install the serverless framework plugins required.
 
-   ```shell
-   yarn
-   ```
+```shell
+yarn
+```
 
 3. Create a virtualenv for python
 
-   ```shell
-   yarn venv-setup
-   ```
+```shell
+yarn venv-setup
+```
 
 4. Install python dependencies
 
-   ```shell
-   pip install -r requirements-dev.txt
-   ```
+```shell
+pip install -r requirements-dev.txt
+```
 
 5. Install the pre-commit hooks.
 
-   ```shell
-   pre-commit install
-   ```
+```shell
+pre-commit install
+```
 
 And that’s all.
 
 To initialize a new repository using this template use the following command:
 
 ```shell
-serverless create --template-url https://github.com/Fondeadora/python-service-template --path myService
+serverless create--template-url https://github.com/Fondeadora/python-service-template--path my-service
 ```
 
 Make sure you replace `myService` with the name of your service and update the `service.name` in `serverless.yml` file.
@@ -82,6 +82,16 @@ yarn deploy-prod
 
 # Test
 python -m unittest discover
+```
+
+## Formatting and linting
+
+```shell
+make format
+```
+
+```shell
+make lint
 ```
 
 ## Further notes

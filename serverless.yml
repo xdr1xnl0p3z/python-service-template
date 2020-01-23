@@ -41,3 +41,11 @@ custom:
     prewarm: true
     memorySize: 512
     role: arn:aws:iam::635826338015:role/warmupRole
+
+package:
+  exclude:
+    - .git/**
+    - .venv/**
+    - env/**
+    - node_modules/**
+    - service/config/local.py
