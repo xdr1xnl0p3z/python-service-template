@@ -1,0 +1,8 @@
+.layers: &default_layers
+
+dev:
+  layers: *default_layers
+staging:
+  layers: *default_layers
+production:
+  layers: *default_layers

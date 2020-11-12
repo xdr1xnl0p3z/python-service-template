@@ -1,0 +1,8 @@
+.resources: &default_resources
+
+dev:
+  resources: *default_resources
+staging:
+  resources: *default_resources
+production:
+  resources: *default_resources
