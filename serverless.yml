@@ -1,8 +1,6 @@
 service: python-service-template
 
 plugins:
-  - serverless-offline
-  - serverless-offline-sqs
   - serverless-plugin-git-variables
   - serverless-plugin-warmup
   - serverless-prune-plugin
