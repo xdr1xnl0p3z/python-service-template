@@ -1,8 +1,6 @@
 service: python-service-template
 
 plugins:
-  - serverless-offline
-  - serverless-offline-sqs
   - serverless-plugin-git-variables
   - serverless-plugin-warmup
   - serverless-prune-plugin
@@ -11,15 +9,19 @@ plugins:
 provider:
   name: aws
   runtime: python3.7
-  stage: ${opt:stage, "dev"}
-  region: us-east-1
+  profile: ${self:custom.stacks.${self:custom.stack}.profile, "default"}
+  stage: ${self:custom.stacks.${self:custom.stack}.stage, "dev"}
+  region: ${self:custom.stacks.${self:custom.stack}.region, "us-east-1"}
+  environment: ${file(config/environment.yml):${self:provider.stage}.environment}
+  layers: ${file(config/config.yml):${self:provider.stage}.layers}
+  iamRoleStatements: ${file(config/iam.yml):${self:provider.stage}.iamRoleStatements}
   tags:
     branch: ${git:branch}
     commit: ${git:sha1}
 
 functions:
   hello:
-    handler: src/handlers/handler.hello
+    handler: src.handlers.hello.handler.handler
     events:
       - http:
           method: get
@@ -28,6 +30,8 @@ functions:
       enabled: true
 
 custom:
+  stack: ${opt:stack, "stackDev"}
+  stacks: ${file(config/stacks.yml):stacks}
   exportGitVariables: false
   prune:
     automatic: true
@@ -40,7 +44,7 @@ custom:
     timeout: 20
     prewarm: true
     memorySize: 512
-    role: arn:aws:iam::635826338015:role/warmupRole
+    role: ${self:custom.stacks.${self:custom.stack}.warmupRole}
 
 package:
   exclude:

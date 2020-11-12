@@ -1,0 +1,15 @@
+.environment: &default_environment
+  STAGE: ${self:provider.stage}
+  SERVICE: ${self:service}
+  STACK: ${self:custom.stacks.${self:custom.stack}.name}
+
+
+dev:
+  environment:
+    <<: *default_environment
+staging:
+  environment:
+    <<: *default_environment
+production:
+  environment:
+    <<: *default_environment

@@ -11,11 +11,9 @@
     "pip": "pip install -r requeriments.txt"
   },
   "devDependencies": {
-    "serverless-offline": "^4.1.4",
-    "serverless-offline-sqs": "^1.6.1",
-    "serverless-plugin-git-variables": "^3.3.2",
-    "serverless-plugin-warmup": "^4.7.0-rc.1",
-    "serverless-prune-plugin": "^1.4.0",
+    "serverless-plugin-git-variables": "^3.5.0",
+    "serverless-plugin-warmup": "^4.9.0",
+    "serverless-prune-plugin": "^1.4.3",
     "serverless-python-requirements": "^4.2.5"
   }
 }

@@ -34,7 +34,7 @@ npm install -g serverless
 2. Install the serverless framework plugins required.
 
 ```shell
-yarn
+npm install
 ```
 
 3. Create a virtualenv for python

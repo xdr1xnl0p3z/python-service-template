@@ -1,0 +1,51 @@
+.vpc: &default_vpc
+  securityGroupIds:
+    - sg-00000000000000000
+  subnetIds:
+    - subnet-00000000000000000
+    - subnet-00000000000000000
+
+stacks:
+  stackDev:
+    name: stack
+    prefix: ''
+    stage: dev
+    profile: stackDev
+    vpc:
+      <<: *default_vpc
+    warmupRole: arn:aws:iam::000000000000:role/warmup-role
+  stackProd:
+    name: stack
+    prefix: ''
+    stage: production
+    profile: stacksProd
+    vpc:
+      <<: *default_vpc
+    warmupRole: arn:aws:iam::000000000000:role/warmup-role
+  otherDev:
+    name: other
+    stage: dev
+    prefix: 'other-'
+    profile: otherDev
+    vpc:
+      securityGroupIds:
+        - sg-00000000000000000
+      subnetIds:
+        - subnet-00000000000000000
+        - subnet-00000000000000000
+    warmupRole: arn:aws:iam::000000000000:role/other-warmup-dev-role
+  otherProd:
+    name: other
+    prefix: 'other-'
+    stage: production
+    profile: otherProd
+    vpc:
+      securityGroupIds:
+        - sg-00000000000000000
+      subnetIds:
+        - subnet-00000000000000000
+        - subnet-00000000000000000
+        - subnet-00000000000000000
+        - subnet-00000000000000000
+        - subnet-00000000000000000
+    warmupRole: arn:aws:iam::000000000000:role/other-warmup-production-role

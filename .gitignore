@@ -30,3 +30,4 @@ __pycache__
 
 # Python
 .mypy_cache
+.coverage
